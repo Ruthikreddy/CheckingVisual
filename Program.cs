@@ -8,15 +8,15 @@ namespace RegexExp
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to User Registration Program ");
-            string FirstName,LastName,Email,PhoneNo,Password;
+            string FirstName, LastName, Email, PhoneNo, Password;
             String Pattern;
-            while(true)
+            while (true)
             {
                 Pattern = @"([A-Z]+)[a-zA-Z]{2,}";
                 Console.WriteLine("Enter your First Name with First letter in Capitals ");
                 FirstName = Console.ReadLine();
                 Regex regex = new Regex(Pattern);
-                if(regex.IsMatch(FirstName))
+                if (regex.IsMatch(FirstName))
                 {
                     Console.WriteLine("Valid First Name");
                     break;
@@ -78,7 +78,7 @@ namespace RegexExp
             {
                 Console.WriteLine("Set a password: ");
                 Password = Console.ReadLine();
-                Pattern = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
+                Pattern = @"(?=.*[A-Z])(?=.*\w)(?=.*\d)(?=[^@$!%*^#?&]*[@$!%*^#?&][^@$!%^*#?&]*$).{8,}$";
                 Regex regex = new Regex(Pattern);
                 if (regex.IsMatch(Password))
                 {
@@ -87,11 +87,9 @@ namespace RegexExp
                 }
                 else
                 {
-                    Console.WriteLine("Enter password again );
-                        Console.WriteLine( "adding change for github" );
+                    Console.WriteLine("Enter password again with minimum 8 Characters with one capital letter");
                 }
             }
         }
-        }
     }
-
+}
